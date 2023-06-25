@@ -1,5 +1,5 @@
-import {VendorUI} from './components/vendor'
-import { AuthorityUI } from './components/authority';
+import {VendorUI} from './components/vendor.jsx'
+import { AuthorityUI } from './components/authority.jsx';
 import {useState, useEffect} from 'react'
 import './App.css';
 

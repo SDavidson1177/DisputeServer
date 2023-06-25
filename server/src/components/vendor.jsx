@@ -9,16 +9,20 @@ const localNodeUrl = "/rpc/v0";
 const adminAuthToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiLCJzaWduIiwiYWRtaW4iXX0.HQqs47ezEiD67HbbIy6eVkJpBAqlOogyYvQwL-UKZdI"
 const localConnector = new HttpJsonRpcConnector({ url: localNodeUrl });
 
-// // lotusClient exposes all Lotus APIs
+// lotusClient exposes all Lotus APIs
 const lotusClient = new LotusClient(localConnector);
 
-async function storeFile(data){
+async function storeLicense(data){
     try {
         console.log(data.file[0].name);
-        await fetch("/api", {
-            method: "GET",
-            headers: {"Content-Type" : "application/json"}
-        });
+        console.log(data.file[0].size);
+        const formData = new FormData();
+        formData.append( 'data', data.file[0] );
+        let resp = await fetch('/license', {
+            method: 'POST',
+            body: formData,
+        })
+        await resp.text();
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +76,7 @@ export function VendorUI() {
             </div>
             <div id="submit-license">
                 <h2>Submit License For Verification</h2>
-                <form method="POST" onSubmit={handleSubmit(storeFile)} encType="multipart/form-data">
+                <form method="POST" onSubmit={handleSubmit(storeLicense)} encType="multipart/form-data">
                     <input type="file"
                         id="license" name="license"
                         {...register("file")}>
