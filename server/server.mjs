@@ -38,16 +38,18 @@ app.post("/license", async (req, res) => {
     const fileName = encodeURIComponent(file.originalFilename.replace(/\s/g, "-"));
     fs.renameSync(file.filepath, path.join("./data", fileName));
 
-    // fs.writeFile(newPath, rawData, function (err) {
-    //     if (err) console.log(err)
-    //     return res.send("Successfully uploaded")
-    // })
 
-    // // directly upload to filecoin
     // const importResult = await lotusClient.client.import({
-    //     Path: files.filepath,
+    //     Path: path.join(__dirname + "/data", fileName),
     //     IsCAR: false,
     // });
+
+    // const importResult = await lotusClient.client.import({
+    //     Path: "./data/test.txt",
+    //     IsCAR: false,
+    // });
+  
+    // console.log(importResult.Root);
   
     // console.log(importResult.Root);
 

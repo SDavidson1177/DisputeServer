@@ -4,8 +4,7 @@
 export function AuthorityUI() {
     return(
         <>
-            <h1>Authority UI</h1>
-            
+            <h1>Authority UI</h1> 
         </>
     );
 }

@@ -84,7 +84,7 @@ export function VendorUI() {
                     <input type="submit" />
                 </form>
             </div>
-            <div id="submit-evidence">
+            {/* <div id="submit-evidence">
                 <h2>Submit Evidence of Work</h2>
                 <form>
                     <input type="file"
@@ -95,7 +95,7 @@ export function VendorUI() {
                         <input type="text"></input>
                     </label>
                 </form>
-            </div>
+            </div> */}
         </>
     );
 }
